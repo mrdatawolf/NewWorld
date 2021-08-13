@@ -15,6 +15,24 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('raw') }}" :active="request()->routeIs('raw')">
+                        {{ __('Raw Tables') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('base_resources.index') }}" :active="request()->routeIs('base_resources.index')">
+                        {{ __('Base Resources') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('ores.index') }}" :active="request()->routeIs('ores.index')">
+                        {{ __('Ores') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('ingots.index') }}" :active="request()->routeIs('ingots.index')">
+                        {{ __('Ingots') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('items.index') }}" :active="request()->routeIs('items.index')">
+                        {{ __('Items') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('locations.index') }}" :active="request()->routeIs('locations.index')">
+                        {{ __('Locations') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -140,6 +158,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('raw') }}" :active="request()->routeIs('raw')">
+                {{ __('Raw tables') }}
             </x-jet-responsive-nav-link>
         </div>
 
