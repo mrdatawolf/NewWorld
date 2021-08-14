@@ -18,7 +18,7 @@
                     <x-jet-nav-link href="{{ route('raw') }}" :active="request()->routeIs('raw')">
                         {{ __('Raw Tables') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('base_resources.index') }}" :active="request()->routeIs('base_resources.index')">
+                    <x-jet-nav-link href="{{ route('bases.index') }}" :active="request()->routeIs('bases.index')">
                         {{ __('Base Resources') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('ores.index') }}" :active="request()->routeIs('ores.index')">

@@ -57,8 +57,8 @@ class OresController extends Controller
      */
     public function show(Ores $Ores, $id)
     {
-        $resource = $Ores->find($id);
-        return view('ores.show',compact('resource'));
+        $ore = $Ores->find($id);
+        return view('ores.show',compact('ore'));
     }
 
 

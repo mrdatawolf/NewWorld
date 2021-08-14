@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BaseResources;
+use App\Models\Ingots;
 use App\Models\Items;
+use App\Models\Ores;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -57,8 +60,29 @@ class ItemsController extends Controller
      */
     public function show(Items $Items, $id)
     {
-        $resource = $Items->find($id);
-        return view('items.show',compact('resource'));
+        $item = $Items->find($id);
+        $b = (!empty($item->bases_required))? json_decode($item->bases_required) : [];
+        foreach($b as $id => $amount) {
+            $bases[] = (object) ['id' => $id, 'name' => BaseResources::find($id)->name, 'amount' => $amount];
+        }
+        $o = (!empty($item->ores_required))? json_decode($item->ores_required) : [];
+        foreach($o as $id => $amount) {
+            $ores[] = (object) ['id' => $id, 'name' => Ores::find($id)->name, 'amount' => $amount];
+        }
+        $in = (!empty($item->ingots_required))? json_decode($item->ingots_required) : [];
+        foreach($in as $id => $amount) {
+            $ingots[] = (object) ['id' => $id, 'name' => Ingots::find($id)->name, 'amount' => $amount];
+        }
+        $it = (!empty($item->items_required))? json_decode($item->items_required) : [];
+        foreach($it as $id => $amount) {
+            $items[] = (object) ['id' => $id, 'name' => Items::find($id)->name, 'amount' => $amount];
+        }
+        $item->bases = $bases ?? [];
+        $item->ores = $ores ?? [];
+        $item->ingots = $ingots ?? [];
+        $item->items = $items ?? [];
+
+        return view('items.show',compact(['item']));
     }
 
 
@@ -93,6 +117,10 @@ class ItemsController extends Controller
         ]);
         $items = Items::find($id);
         $items->name = $request->name;
+        $items->bases_required = $request->bases ?? "";
+        $items->ores_required = $request->ores ?? "";
+        $items->ingots_required = $request->ingots ?? "";
+        $items->items_required = $request->items ?? "";
         $items->save();
         return redirect()->route('items.index')
                          ->with('success','Item has been updated successfully');

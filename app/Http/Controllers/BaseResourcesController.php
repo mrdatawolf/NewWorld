@@ -14,7 +14,7 @@ class BaseResourcesController extends Controller
     {
         $data['baseResources'] = BaseResources::orderBy('id','desc')->paginate(20);
 
-        return view('base_resources.index', $data);
+        return view('bases.index', $data);
     }
 
 
@@ -23,7 +23,7 @@ class BaseResourcesController extends Controller
      */
     public function create()
     {
-        return view('base_resources.create');
+        return view('bases.create');
     }
 
 
@@ -42,7 +42,7 @@ class BaseResourcesController extends Controller
         $br = new BaseResources;
         $br->name = $request->name;
         $br->save();
-        return redirect()->route('base_resources.index')
+        return redirect()->route('bases.index')
                          ->with('success','The base resource has been created successfully.');
     }
 
@@ -58,7 +58,7 @@ class BaseResourcesController extends Controller
     public function show(BaseResources $baseResources, $id)
     {
         $baseResource = $baseResources->find($id);
-        return view('base_resources.show',compact('baseResource'));
+        return view('bases.show',compact('baseResource'));
     }
 
 
@@ -74,7 +74,7 @@ class BaseResourcesController extends Controller
     {
         $baseResource = $baseResources->find($id);
 
-        return view('base_resources.edit',compact('baseResource'));
+        return view('bases.edit',compact('baseResource'));
     }
 
 
@@ -94,7 +94,7 @@ class BaseResourcesController extends Controller
         $br = BaseResources::find($id);
         $br->name = $request->name;
         $br->save();
-        return redirect()->route('base_resources.index')
+        return redirect()->route('bases.index')
                          ->with('success','Base Resource has been updated successfully');
     }
 
@@ -110,6 +110,6 @@ class BaseResourcesController extends Controller
     {
         $baseResources->delete();
 
-        return redirect()->route('base_resources.index');
+        return redirect()->route('bases.index');
     }
 }

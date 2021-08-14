@@ -14,8 +14,8 @@
             <td>{{ $baseResource->id }}</td>
             <td>{{ $baseResource->name }}</td>
             <td>
-                <form action="{{ route('base_resources.destroy',$baseResource->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('base_resources.edit',$baseResource->id) }}">Edit</a>
+                <form action="{{ route('bases.destroy',$baseResource->id) }}" method="Post">
+                    <a class="btn btn-primary" href="{{ route('bases.edit',$baseResource->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>

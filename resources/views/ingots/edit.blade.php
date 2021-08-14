@@ -28,6 +28,26 @@
                         @error('name')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
+                        <strong>Bases Required:</strong>
+                        <input type="text" name="bases" value="{{ $resource->bases_required }}" class="form-control" placeholder="Ingot base requirements">
+                        @error('bases')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                        <strong>Ores Required:</strong>
+                        <input type="text" name="ores" value="{{ $resource->ores_required }}" class="form-control" placeholder="Ingot ore requirements">
+                        @error('ores')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                        <strong>Ingots Required:</strong>
+                        <input type="text" name="ingots" value="{{ $resource->ingots_required }}" class="form-control" placeholder="Ingot ingot requirements">
+                        @error('ingots')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                        <strong>Items Required:</strong>
+                        <input type="text" name="items" value="{{ $resource->items_required }}" class="form-control" placeholder="Ingot items requirements">
+                        @error('items')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary ml-3">Submit</button>
