@@ -1,6 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\BaseResources;
 use App\Models\Ingots;
+use App\Models\Items;
+use App\Models\Ores;
 use Illuminate\Http\Request;
 
 class IngotsController extends Controller
@@ -55,8 +58,28 @@ class IngotsController extends Controller
      */
     public function show(Ingots $Ingots, $id)
     {
-        $resource = $Ingots->find($id);
-        return view('ingots.show',compact('resource'));
+        $ingot = $Ingots->find($id);
+        $b = (!empty($ingot->bases_required))? json_decode($ingot->bases_required) : [];
+        foreach($b as $id => $amount) {
+            $bases[] = (object) ['id' => $id, 'name' => BaseResources::find($id)->name, 'amount' => $amount];
+        }
+        $o = (!empty($ingot->ores_required))? json_decode($ingot->ores_required) : [];
+        foreach($o as $id => $amount) {
+            $ores[] = (object) ['id' => $id, 'name' => Ores::find($id)->name, 'amount' => $amount];
+        }
+        $in = (!empty($ingot->ingots_required))? json_decode($ingot->ingots_required) : [];
+        foreach($in as $id => $amount) {
+            $ingots[] = (object) ['id' => $id, 'name' => Ingots::find($id)->name, 'amount' => $amount];
+        }
+        $it = (!empty($ingot->items_required))? json_decode($ingot->items_required) : [];
+        foreach($it as $id => $amount) {
+            $items[] = (object) ['id' => $id, 'name' => Items::find($id)->name, 'amount' => $amount];
+        }
+        $ingot->bases = $bases ?? [];
+        $ingot->ores = $ores ?? [];
+        $ingot->ingots = $ingots ?? [];
+        $ingot->items = $items ?? [];
+        return view('ingots.show',compact('ingot'));
     }
 
 
@@ -91,6 +114,10 @@ class IngotsController extends Controller
         ]);
         $ingots = Ingots::find($id);
         $ingots->name = $request->name;
+        $ingots->bases_required = $request->bases ?? "";
+        $ingots->ores_required = $request->ores ?? "";
+        $ingots->ingots_required = $request->ingots ?? "";
+        $ingots->items_required = $request->items ?? "";
         $ingots->save();
         return redirect()->route('ingots.index')
                          ->with('success','Ingot has been updated successfully');

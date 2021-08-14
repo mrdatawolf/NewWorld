@@ -13,10 +13,12 @@ class Actions extends Component
 {
     public $thisId;
     public $name;
+    public $hide;
 
-    public function mount($id, $name) {
+    public function mount($id, $name, $hide = null) {
         $this->thisId = $id;
         $this->name = $name;
+        $this->hide = $hide;
     }
 
     public function delete(int $id) {

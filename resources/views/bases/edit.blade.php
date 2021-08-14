@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('base_resources.index') }}" enctype="multipart/form-data"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('bases.index') }}" enctype="multipart/form-data"> Back</a>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        <form action="{{ route('base_resources.update',$baseResource->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('bases.update',$baseResource->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
