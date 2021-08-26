@@ -22,7 +22,7 @@ class Actions extends Component
     public function delete(int $id) {
         $br = BaseResources::find($id);
         $brc = new BaseResourcesController();
-            $brc->destroy($br);
+        $brc->destroy($br);
     }
 
     public function render()

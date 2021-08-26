@@ -30,4 +30,9 @@ class Locations extends Model
         'updated_at' => 'datetime',
         'created_at' => 'datetime'
     ];
+
+    public function marketData()
+    {
+        return $this->hasMany(MarketData::class);
+    }
 }

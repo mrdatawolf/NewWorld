@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ores extends Model
+class ResourceTypes extends Model
 {
     use HasFactory;
 
     public $timestamps = true;
-    protected $table = 'ores';
-
+    protected $table = 'resource_types';
     /**
      * The attributes that are mass assignable.
      *
