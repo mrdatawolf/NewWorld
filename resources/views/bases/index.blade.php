@@ -17,21 +17,6 @@
             </div>
         @endif
 
-        <table class="table table-bordered">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th style="width: 280px">Action</th>
-            </tr>
-            @foreach ($baseResources as $resource)
-                <tr>
-                    <td>{{ $resource->id }}</td>
-                    <td>{{ $resource->name }}</td>
-                    <td>
-                        @livewire('bases.actions', ['id' => $resource->id, 'name' => $resource->name])
-                    </td>
-                </tr>
-            @endforeach
-        </table>
+    <livewire:bases.datatable-of-bases />
     {!! $baseResources->links() !!}
 </x-app-layout>

@@ -33,6 +33,9 @@
                     <x-jet-nav-link href="{{ route('locations.index') }}" :active="request()->routeIs('locations.index')">
                         {{ __('Locations') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('markets') }}" :active="request()->routeIs('markets')">
+                        {{ __('Markets') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
