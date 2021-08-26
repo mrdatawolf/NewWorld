@@ -84,6 +84,7 @@ class AddMarketDataPoint extends Component
             $md->amount = $this->amount;
             $md->save();
             $this->resetValues();
+            $this->emit('refreshDatatable');
         }
     }
 
