@@ -7,6 +7,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
 class DatatableOfBases extends LivewireDatatable
 {
+    protected $listeners = ['refreshDatatable' => '$refresh'];
     public $exportable = true;
 
     public function builder()
