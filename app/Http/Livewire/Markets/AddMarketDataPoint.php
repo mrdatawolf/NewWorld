@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Livewire\Markets;
+<?php namespace App\Http\Livewire\Markets;
 
 use App\Models\BaseResources;
 use App\Models\Ingots;
