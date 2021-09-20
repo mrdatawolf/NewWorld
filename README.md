@@ -5,6 +5,15 @@
 
 A standalone web service allowing users to see trade data from participating Space Engineers (SE) Servers.  The goal is to display data to help a user smartly position themselves in their choosen SE Server's markets. Whether the user is running their own trades or are simply looking to maximze their profits; this system will help them understand the market forces in play and give guidance on the setting up the best trade positions.
 
+## This site is built on
+1. PHP 7.4
+2. Laravel 8
+3. Python 3.8
+4. Tailwinds CSS
+5. Livewire
+6. Sanctum
+7. Jetstream
+
 ##Development setup Quick Start (for local development and testing)
 1. It is now built on laravel 8 so get that running. (see [Laravel](https://laravel.com/docs/8.x#your-first-laravel-project) for instalation instructions)
 2. Do composer update
@@ -28,12 +37,12 @@ Road to 1.0 MVP
 11. There should be a general info page that helps a new user with tips/tricks and links to other helpful information.
 
 ##Future Roadmap
-1.  Revised +2.0 goals.
-    1. Hmmm...
+1.  2.0 goals.
+    1. There is map and statistical data we are workign on showing.
 
 ##Notes
-This is a livewire and tailwinds css driven site
 
+This is a livewire and tailwinds css driven site.
 ## Contributing
 
 1. Fork it (<https://github.com/mrdatawolf/NewWorld/fork>)
