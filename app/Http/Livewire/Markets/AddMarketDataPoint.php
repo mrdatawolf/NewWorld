@@ -11,14 +11,14 @@ use Livewire\Component;
 
 class AddMarketDataPoint extends Component
 {
-    public int $location;
-    public array $locations;
-    public int $type;
-    public array $types;
-    public int $resource;
-    public array $resources;
-    public int $value;
-    public int $amount;
+    public $location;
+    public $locations;
+    public $type;
+    public $types;
+    public $resource;
+    public $resources;
+    public $value;
+    public $amount;
     public bool $allowSubmit = false;
     public bool $submitted = false;
 
