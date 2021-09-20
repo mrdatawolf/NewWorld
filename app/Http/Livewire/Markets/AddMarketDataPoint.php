@@ -11,20 +11,23 @@ use Livewire\Component;
 
 class AddMarketDataPoint extends Component
 {
-    public $location;
-    public $locations;
-    public $type;
-    public $types;
-    public $resource;
-    public $resources;
-    public $value;
-    public $amount = 0;
-    public $allowSubmit = false;
-    public $submitted = false;
+    public int $location;
+    public array $locations;
+    public int $type;
+    public array $types;
+    public int $resource;
+    public array $resources;
+    public int $value;
+    public int $amount;
+    public bool $allowSubmit = false;
+    public bool $submitted = false;
+
+    private int $defaultAmount = 1;
 
     public function mount() {
-        $this->locations = Locations::all();
+        $this->locations = Locations::orderBy('name')->get();
         $this->types = ResourceTypes::all();
+        $this->amount = $this->defaultAmount;
 
         $this->populateResources();
     }
@@ -32,16 +35,16 @@ class AddMarketDataPoint extends Component
     public function populateResources() {
         switch ($this->type) {
             case 1 :
-                $this->resources = BaseResources::all();
+                $this->resources = BaseResources::orderBy('name')->get();
                 break;
             case 2:
-                $this->resources = Ores::all();
+                $this->resources = Ores::orderBy('name')->get();
                 break;
             case 3:
-                $this->resources = Ingots::all();
+                $this->resources = Ingots::orderBy('name')->get();
                 break;
             case 4:
-                $this->resources = Items::all();
+                $this->resources = Items::orderBy('name')->get();
                 break;
             default:
                 $this->resources = null;
@@ -81,18 +84,22 @@ class AddMarketDataPoint extends Component
             $md->value = $this->value;
             $md->amount = $this->amount;
             $md->save();
-            $this->resetValues();
+            $this->resetValues(['location']);
             $this->emit('refreshDatatable');
         }
     }
 
-    private function resetValues() {
-        $this->value = null;
-        $this->amount = 0;
-        $this->resource = null;
-        $this->resources = null;
-        $this->type = null;
-        $this->location = null;
+
+    /**
+     * @param array $except
+     */
+    private function resetValues($except) {
+        $this->value = (in_array('value',$except)) ? $this->value : null;
+        $this->amount = (in_array('amount',$except)) ? $this->amount : 1;
+        $this->resource = (in_array('resource',$except)) ? $this->resource : null;
+        $this->resources = (in_array('resources',$except)) ? $this->resources : null;
+        $this->type = (in_array('type',$except)) ? $this->type : null;
+        $this->location = (in_array('location',$except)) ? $this->location : null;
         $this->allowSubmit = false;
     }
 
