@@ -7,5 +7,5 @@
     <div class="border-solid border-2 border-light-blue-300">
     @livewire('markets.add-market-data-point')
     </div>
-    <livewire:markets.datatable-of-market-data/>
+    <livewire:markets.datatable-of-market-ore-data/>
 </x-app-layout>

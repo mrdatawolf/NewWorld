@@ -12,7 +12,7 @@ use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
-class DatatableOfMarketData extends LivewireDatatable
+class DatatableOfMarketBaseData extends LivewireDatatable
 {
     protected $listeners = ['refreshDatatable' => '$refresh'];
 
@@ -21,7 +21,8 @@ class DatatableOfMarketData extends LivewireDatatable
 
     public function builder()
     {
-        return MarketData::select('locations_id', 'types_id', 'resources_id', 'market_data.updated_at', 'market_data.created_at', 'value', 'amount')
+        return MarketData::select('locations_id', 'resources_id', 'market_data.updated_at', 'market_data.created_at', 'value', 'amount')
+                         ->where('types_id',1)
                          ->groupBy(['locations_id', 'types_id', 'resources_id'])
                          ->orderBy('market_data.updated_at');
     }
@@ -31,11 +32,7 @@ class DatatableOfMarketData extends LivewireDatatable
     {
         return [
             Column::name('locations.name')->label('Location')->filterable($this->locations)->truncate(15),
-            Column::name('types.name')->label('Resource Type')->filterable($this->resourceTypes),
             Column::name('baseResources.name')->label('Base Resource')->filterable($this->baseResources),
-            Column::name('ores.name')->label('Ores')->filterable($this->ores),
-            Column::name('ingots.name')->label('Ingots')->filterable($this->ingots),
-            Column::name('items.name')->label('Items')->filterable($this->items),
             NumberColumn::name('value')->label('value')->filterable()->alignRight(),
             NumberColumn::name('amount')->label('amount')->filterable()->alignRight(),
             DateColumn::name('updated_at')->label('date')->filterable(),

@@ -15,8 +15,17 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('markets') }}" :active="request()->routeIs('markets')">
-                        {{ __('Markets') }}
+                    <x-jet-nav-link href="{{ route('market.base') }}" :active="request()->routeIs('market.base')">
+                        {{ __('Market for Bases') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('market.ores') }}" :active="request()->routeIs('market.ores')">
+                        {{ __('Market for Ores') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('market.ingots') }}" :active="request()->routeIs('market.ingots')">
+                        {{ __('Market for Ingots') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('market.items') }}" :active="request()->routeIs('market.items')">
+                        {{ __('Market for Items') }}
                     </x-jet-nav-link>
                 </div>
             </div>
