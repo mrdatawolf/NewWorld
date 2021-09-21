@@ -23,9 +23,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/raw', function () {
     return view('raw');
 })->name('raw');
-Route::middleware(['auth:sanctum', 'verified'])->get('/markets', function () {
-    return view('markets.index');
-})->name('markets');
+Route::middleware(['auth:sanctum', 'verified'])->get('/market/base', function () {
+    return view('markets.base');
+})->name('market.base');
+Route::middleware(['auth:sanctum', 'verified'])->get('/market/ores', function () {
+    return view('markets.ores');
+})->name('market.ores');
+Route::middleware(['auth:sanctum', 'verified'])->get('/market/ingots', function () {
+    return view('markets.ingots');
+})->name('market.ingots');
+Route::middleware(['auth:sanctum', 'verified'])->get('/market/items', function () {
+    return view('markets.items');
+})->name('market.items');
 
 Route::resource('bases',App\Http\Controllers\BaseResourcesController::class);
 Route::resource('ores',App\Http\Controllers\OresController::class);
