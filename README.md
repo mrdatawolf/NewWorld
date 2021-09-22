@@ -3,7 +3,7 @@
 
 > Resource Manager for New Worlds
 
-A standalone web service allowing users to see trade data from participating Space Engineers (SE) Servers.  The goal is to display data to help a user smartly position themselves in their choosen SE Server's markets. Whether the user is running their own trades or are simply looking to maximze their profits; this system will help them understand the market forces in play and give guidance on the setting up the best trade positions.
+A standalone web service allowing users to see trade data for New Worlds. It also aims to help user(s) to effeciently use the market.
 
 ## This site is built on
 1. PHP 7.4
@@ -29,12 +29,13 @@ Road to 1.0 MVP
 3. ~~Locations should be able to be added and viewed.~~
 4. ~~Resources should be able to be added and viewed.~~
 5. ~~Items should be able to be added and viewed.~~
-6. Allow users to put their current trading/crafting and refining tax number for each location. 
+6. Allow users to put their current trading/crafting and refining tax number in for each location. 
 7. ~~Current Store Prices should be displayed for each resource and item at each location.~~
-8. A user should be able to see the current price of that a resource/item is selling at.  They should also be able to see a breakdown of the goods required (and their price) to build the item and what the selling price is for those goods.
-9. A user should be able to define a set of goods they want to make and get the aggregate required totals of the goods needed to make the item.
-10. A user should be able to define an amount of a given good they already have and that is subtracted from the build cost.
-11. There should be a general info page that helps a new user with tips/tricks and links to other helpful information.
+8. ~~A user should be able to see the current price of that a resource/item is selling at at a location~~.  
+9. A user should be able to see a breakdown of the goods required (and their price) to build the item and what the selling price is for those goods.
+10. A user should be able to define a set of goods they want to make and get the aggregate required totals of the goods needed to make the item.
+11. A user should be able to define an amount of a given good they already have and that is subtracted from the build cost.
+12. There should be a general info page that helps a new user with tips/tricks and links to other helpful information.
 
 ##Future Roadmap
 1.  2.0 goals.
