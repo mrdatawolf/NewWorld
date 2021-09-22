@@ -7,7 +7,7 @@
                 <option value={{ $location->id }}>{{ $location->name }}</option>
             @endforeach
         </select>
-        <select id="type" name="type" wire:model="type" wire:change="typeChanged" class="border shadow p-2 bg-white">
+        <select id="type" name="type" wire:model="type" wire:change="typeChanged" class="border shadow p-2 bg-white hidden">
             <option value=''>Type?</option>
             @foreach($types as $type)
                 <option value={{ $type->id }}>{{ $type->name }}</option>

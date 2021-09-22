@@ -24,9 +24,13 @@ class AddMarketDataPoint extends Component
 
     private int $defaultAmount = 1;
 
-    public function mount() {
+    public function mount($passed = []) {
         $this->locations = Locations::orderBy('name')->get();
-        $this->types = ResourceTypes::all();
+        if(! empty($passedType)) {
+            $this->type = $passed['type'];
+        }
+
+        $this->types = (empty($this->type)) ? ResourceTypes::all() : ResourceTypes::where('id', $this->type)->get();
         $this->amount = $this->defaultAmount;
 
         $this->populateResources();
@@ -84,7 +88,7 @@ class AddMarketDataPoint extends Component
             $md->value = $this->value;
             $md->amount = $this->amount;
             $md->save();
-            $this->resetValues(['location']);
+            $this->resetValues(['location', 'type']);
             $this->emit('refreshDatatable');
         }
     }
@@ -93,7 +97,7 @@ class AddMarketDataPoint extends Component
     /**
      * @param array $except
      */
-    private function resetValues($except) {
+    private function resetValues(array $except) {
         $this->value = (in_array('value',$except)) ? $this->value : null;
         $this->amount = (in_array('amount',$except)) ? $this->amount : 1;
         $this->resource = (in_array('resource',$except)) ? $this->resource : null;
