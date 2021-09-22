@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="border-solid border-2 border-light-blue-300">
-    @livewire('markets.add-market-data-point')
+    @livewire('markets.add-market-data-point',['type' => 4])
     </div>
     <livewire:markets.datatable-of-market-item-data/>
 </x-app-layout>
